@@ -10,6 +10,7 @@ sqlparse
 typing
 Werkzeug
 gunicorn
+gevent
 psycopg2
 celery
 redis
