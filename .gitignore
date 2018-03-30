@@ -6,5 +6,4 @@
 */migrations/*
 ./aslm/static/*
 /__pycache__
-aslm/aslm/__pycache__/settings.cpython-35.pyc
 */static/
