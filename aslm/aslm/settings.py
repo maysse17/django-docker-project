@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+import re
+from django.urls.base import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_bootstrap_breadcrumbs',
+    'debug_toolbar',
+    'django_extensions',
+    'webpack_loader',
+    'django_js_reverse',
+
+    'base',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'base.context_processors.get_manufacturer',
+                'base.context_processors.get_title',
+                'base.context_processors.get_version',
             ],
         },
     },
@@ -116,7 +129,31 @@ USE_L10N = True
 
 USE_TZ = True
 
+INTERNAL_IPS = ['127.0.0.1', 'localhost']
 
+TITLE = 'BLOG'
+
+MANUFACTURER = 'ASLM'
+
+HOME = reverse_lazy('base:home')
+
+LOGIN_URL = reverse_lazy('accounts:login')
+
+LOGIN_REDIRECT_URL = HOME
+
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
+def find_version():
+    with open(os.path.join(os.path.dirname(__file__), 'version.py')) as fp:
+        version_file = fp.read()
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                                  version_file, re.M)
+        if version_match:
+            return version_match.group(1)
+        raise RuntimeError("Unable to find version string.")
+
+
+VERSION = find_version()
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -150,4 +187,14 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
+}
+
+# Add config for vue.js
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack-stats.json'),
+    }
 }

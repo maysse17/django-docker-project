@@ -1,0 +1,44 @@
+{% load static %}
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    {% if user.is_authenticated %}
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="{% static 'base/img/user_man.png' %}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>{{ user.get_full_name }}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> is Online</a>
+                </div>
+            </div>
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="{% if menu.home.is_active %} active {% endif %}">
+                    <a href="{% url 'base:home' %}">
+                        <i class="fa fa-dashboard"></i> <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="treeview {% if menu.board_show.is_active or  menu.board_create.is_active%} active {% endif %}">
+                    <a href="{% url 'board:show' %}">
+                        <i class="fa fa fa-bars"></i> <span>Board</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li {% if menu.board_show.is_active %} class="active" {% endif %}>
+                            <a href="{% url 'board:show' %}"><i class="fa fa-eye"></i>Show</a></li>
+                        <li {% if menu.board_create.is_active %} class="active" {% endif %}>
+                            <a href="{% url 'board:create' %}"><i class="fa fa-plus-circle"></i>Create</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    {% endif %}
+    <!-- /.sidebar -->
+</aside>

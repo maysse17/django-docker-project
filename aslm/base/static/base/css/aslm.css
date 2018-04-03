@@ -1,0 +1,42 @@
+.content-header {
+    position: relative;
+    padding: 0 1px 0 10px;
+}
+
+.content-header > .breadcrumb {
+    position: relative;
+    float: none;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu {
+    width: 30px;
+}
+
+.skin-blue-light .sidebar-menu > li.active > a {
+    color: #3c8dbc;
+}
+
+.skin-blue-light .sidebar-menu .treeview-menu > li.active > a {
+    color: #3c8dbc;
+}
+
+.box-footer {
+    background-color: inherit;
+}
+
+.skin-blue-light .pagination-rpp select {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    color: inherit;
+    margin-right: 8px;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    border-radius: 4px;
+    width: auto;
+}
+
+/*.btn {*/
+    /*margin-left: 5px;*/
+    /*margin-right: 5px;*/
+/*}*/

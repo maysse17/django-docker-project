@@ -1,0 +1,19 @@
+{%extends "base/errors_base.html"%}
+
+
+{%block content%}
+    <div class="middle-box text-center">
+        <h1>403</h1>
+        <h3 class="font-bold">Forbidden</h3>
+
+        <div class="error-desc ">
+            <p class="col-md-3"></p>
+            <p class="col-md-6">
+            Sorry, but you are not authorized to access this page.
+                <br/>
+            You can go back to main page:
+                <br/><a href="{%url 'base:home'%}" class="btn btn-primary m-t">Home</a>
+            </p>
+        </div>
+    </div>
+{%endblock content%}

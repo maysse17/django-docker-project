@@ -3,7 +3,15 @@
 .vscode
 */*.pyc
 */*/*.pyc
-*/migrations/*
+**/migrations/*
+aslm/accounts/migrations
+aslm/accounts/migrations/*
+aslm/base/migrations
+aslm/base/migrations/*
+aslm/home/migrations
+aslm/home/migrations/*
+aslm/logs
+aslm/logs/*
 ./aslm/static/*
 /__pycache__
 */static/
