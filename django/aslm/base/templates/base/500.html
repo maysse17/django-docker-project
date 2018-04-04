@@ -1,0 +1,17 @@
+{%extends "base/errors_base.html"%}
+
+{%block content%}
+    <div class="middle-box text-center">
+        <h1>500</h1>
+        <h3 class="font-bold">Internal Server Error</h3>
+
+        <div class="error-desc">
+            <p class="col-md-3"></p>
+            <p class="col-md-6">
+            The server encountered something unexpected that didn't allow it to complete the request. <br/>
+                We apologize.<br/>
+            You can go back to main page: <br/><a href="{%url 'base:home'%}" class="btn btn-primary m-t">Home</a>
+            </p>
+        </div>
+    </div>
+{%endblock content%}

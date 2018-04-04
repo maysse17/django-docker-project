@@ -1,31 +1,31 @@
 version: '3'
 services:  
   nginx:
-    image: nginx:latest
-    container_name: nginx
+    build: nginx/
+    container_name: nginx-django
+    volumes:
+      - ./django/aslm:/src
+      - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "8000:8000"
-    volumes:
-      - ./aslm:/src
-      - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
   web:
-    build: .
-    container_name: aslm_django_guinicorn
+    build: ./django/
+    container_name: aslm-django-guinicorn
     depends_on:
       - db
     volumes:
-      - ./aslm:/src
+      - ./django/aslm:/src
     expose:
       - "8000"
     links:
       - redis
   db:
     image: postgres:latest
-    container_name: postgredb
+    container_name: postgredb-django
   redis:
-    build: ./config/redis
+    build: ./redis
     container_name: redis
     ports:
      - '6378:6378'

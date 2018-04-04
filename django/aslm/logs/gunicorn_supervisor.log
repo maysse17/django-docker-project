@@ -1,0 +1,130 @@
+
+Error: 'gunicorn.conf' doesn't exist
+
+Error: 'gunicorn.conf' doesn't exist
+
+Error: 'gunicorn.conf' doesn't exist
+
+Error: 'gunicorn.conf' doesn't exist
+
+Error: '/src/gunicorn.conf' doesn't exist
+
+Error: '/src/gunicorn.conf' doesn't exist
+
+Error: '/src/gunicorn.conf' doesn't exist
+
+Error: '/src/gunicorn.conf' doesn't exist
+[2018-03-30 15:11:41 +0000] [255] [DEBUG] Current configuration:
+  config: /src/gunicorn.conf
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 17
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  spew: False
+  check_config: False
+  preload_app: False
+  sendfile: None
+  chdir: /src
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: -
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: aslm.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fa8fa5b7950>
+  on_reload: <function OnReload.on_reload at 0x7fa8fa5b7ae8>
+  when_ready: <function WhenReady.when_ready at 0x7fa8fa5b7c80>
+  pre_fork: <function Prefork.pre_fork at 0x7fa8fa5b7e18>
+  post_fork: <function Postfork.post_fork at 0x7fa8fa5be048>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fa8fa5be1e0>
+  worker_int: <function WorkerInt.worker_int at 0x7fa8fa5be378>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fa8fa5be510>
+  pre_exec: <function PreExec.pre_exec at 0x7fa8fa5be6a8>
+  pre_request: <function PreRequest.pre_request at 0x7fa8fa5be840>
+  post_request: <function PostRequest.post_request at 0x7fa8fa5be950>
+  child_exit: <function ChildExit.child_exit at 0x7fa8fa5beae8>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fa8fa5bec80>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fa8fa5bee18>
+  on_exit: <function OnExit.on_exit at 0x7fa8fa5c3048>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: TLSv1
+  raw_paste_global_conf: []
+[2018-03-30 15:11:41 +0000] [255] [INFO] Starting gunicorn 19.7.1
+[2018-03-30 15:11:41 +0000] [255] [DEBUG] Arbiter booted
+[2018-03-30 15:11:41 +0000] [255] [INFO] Listening at: http://0.0.0.0:8000 (255)
+[2018-03-30 15:11:41 +0000] [255] [INFO] Using worker: gevent
+[2018-03-30 15:11:41 +0000] [258] [INFO] Booting worker with pid: 258
+[2018-03-30 15:11:41 +0000] [259] [INFO] Booting worker with pid: 259
+[2018-03-30 15:11:41 +0000] [260] [INFO] Booting worker with pid: 260
+[2018-03-30 15:11:41 +0000] [263] [INFO] Booting worker with pid: 263
+[2018-03-30 15:11:41 +0000] [264] [INFO] Booting worker with pid: 264
+[2018-03-30 15:11:41 +0000] [267] [INFO] Booting worker with pid: 267
+[2018-03-30 15:11:41 +0000] [269] [INFO] Booting worker with pid: 269
+[2018-03-30 15:11:41 +0000] [271] [INFO] Booting worker with pid: 271
+[2018-03-30 15:11:41 +0000] [272] [INFO] Booting worker with pid: 272
+[2018-03-30 15:11:41 +0000] [274] [INFO] Booting worker with pid: 274
+[2018-03-30 15:11:41 +0000] [275] [INFO] Booting worker with pid: 275
+[2018-03-30 15:11:41 +0000] [277] [INFO] Booting worker with pid: 277
+[2018-03-30 15:11:42 +0000] [280] [INFO] Booting worker with pid: 280
+[2018-03-30 15:11:42 +0000] [282] [INFO] Booting worker with pid: 282
+[2018-03-30 15:11:42 +0000] [283] [INFO] Booting worker with pid: 283
+[2018-03-30 15:11:42 +0000] [286] [INFO] Booting worker with pid: 286
+[2018-03-30 15:11:42 +0000] [287] [INFO] Booting worker with pid: 287
+[2018-03-30 15:11:42 +0000] [255] [DEBUG] 17 workers
+/usr/local/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2018-03-30 15:11:52 +0000] [286] [DEBUG] GET /
+172.20.0.5 - - [30/Mar/2018:15:11:52 +0000] "GET / HTTP/1.0" 200 16348 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36"
+[2018-03-30 15:11:52 +0000] [286] [DEBUG] Closing connection. 
+/usr/local/lib/python3.6/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+[2018-03-30 15:11:52 +0000] [275] [DEBUG] GET /favicon.ico
+Not Found: /favicon.ico
+172.20.0.5 - - [30/Mar/2018:15:11:52 +0000] "GET /favicon.ico HTTP/1.0" 404 1959 "http://127.0.0.1:8000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36"
+[2018-03-30 15:11:52 +0000] [275] [DEBUG] Closing connection. 
+[2018-03-30 15:13:30 +0000] [275] [DEBUG] GET /
+172.20.0.5 - - [30/Mar/2018:15:13:30 +0000] "GET / HTTP/1.0" 200 16348 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36"
+[2018-03-30 15:13:30 +0000] [275] [DEBUG] Closing connection. 
