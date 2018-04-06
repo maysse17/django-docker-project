@@ -89,10 +89,11 @@ WSGI_APPLICATION = 'aslm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': os.environ.get('DB_ENV_NAME', 'postgres'),
+        'USER': os.environ.get('DB_ENV_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_ENV_PASSWORD', ''),
+        'HOST': os.environ.get('DB_ENV_HOST', 'db'),
+        'PORT': int(os.environ.get('DB_ENV_PORT', 5432)),
     }
 }
 
@@ -143,6 +144,7 @@ LOGIN_REDIRECT_URL = HOME
 
 LOGOUT_REDIRECT_URL = LOGIN_URL
 
+
 def find_version():
     with open(os.path.join(os.path.dirname(__file__), 'version.py')) as fp:
         version_file = fp.read()
@@ -160,9 +162,15 @@ VERSION = find_version()
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+CELERY_BROKER_URL = 'amqp://{user}:{password}@{hostname}:{port}/{vhost}/'.format(
+    user=os.environ.get('RABBIT_ENV_USER', 'admin'),
+    password=os.environ.get('RABBIT_ENV_PASSWORD', 'admin'),
+    hostname=os.environ.get('RABBIT_ZNV_HOST', 'rabbit'),
+    port=int(os.environ.get('RABBIT_ZNV_HOST', 5672)),
+    vhost=os.environ.get('RABBIT_ENV_VHOST', ''))
 
-CELERY_BROKER_URL = 'redis://redis:6378/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6378/0'
+CELERY_TASK_SERIALIZER = "json"
 
 STATIC_ROOT = './static/'
 MEDIA_ROOT = './media/'

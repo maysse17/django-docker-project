@@ -1,15 +1,16 @@
 version: '3'
-services:  
+services:
+  # create nginx web server container
   nginx:
     build: nginx/
     container_name: nginx-django
-    volumes:
-      - ./django/aslm:/src
-      - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
-      - "8000:8000"
+      - "80:80"
     depends_on:
       - web
+    networks:
+      - local
+  # create django application container
   web:
     build: ./django/
     container_name: aslm-django-guinicorn
@@ -20,12 +21,52 @@ services:
     expose:
       - "8000"
     links:
+      - db
+      - rabbit
       - redis
+    networks:
+      - local
+  # create postgreSQL container
   db:
     image: postgres:latest
     container_name: postgredb-django
+    networks:
+      - local
+  # create redis backend container
   redis:
     build: ./redis
-    container_name: redis
+    container_name: redis-django
     ports:
-     - '6378:6378'
+      - '6378:6378'
+    networks:
+      - local
+  # create rabbitMQ for AMQP messages container
+  rabbit:
+    container_name: rabbit-django
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - "5672:5672"  # we forward this port because it's useful for debugging
+      - "15672:15672"  # here, we can access rabbitmq management plugin
+    networks:
+      - local
+  # create celery worker container
+  worker:
+    build:
+      context: ./django
+      dockerfile: Dockerfile_celery
+    command: celery -A aslm worker -l debug -n default@%h
+    volumes:
+      - .:/app
+    links:
+      - db
+      - rabbit
+      - redis
+    depends_on:
+      - rabbit
+    networks:
+      - local
+networks:
+  local:

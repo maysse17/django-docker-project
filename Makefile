@@ -1,29 +1,20 @@
 build:
-	docker-compose build
+	sudo docker-compose build
 
 up:
-	docker-compose up -d
+	sudo docker-compose up
 
 start:
-	docker-compose start
+	sudo docker-compose start
 
 stop:
-	docker-compose stop
+	sudo docker-compose stop
 
-test-react:
-	curl -i http://localhost:3000
-	curl -i http://localhost/react
-
-test-django:
-	curl -i http://localhost:8000
-	curl -i http://localhost:8000/admin/login/?next=/admin/
-	curl -i http://localhost/admin/login/?next=/admin/
-
-bash-react:
-	docker exec -it dockercomposernginxreactdjangodev_react_1 bash
+bash-redis:
+	sudo docker exec -it redis-django bash
 
 bash-django:
-	docker exec -it dockercomposernginxreactdjangodev_django_1 bash
+	sudo docker exec -it aslm-django-guinicorn bash
 
 bash-nginx:
-	docker exec -it dockercomposernginxreactdjangodev_nginx_1 bash
+	sudo docker exec -it nginx-django bash

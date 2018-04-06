@@ -4,6 +4,7 @@ MAINTAINER Adil MOUHSSINE
 
 RUN apt-get update && apt-get -y upgrade && \
    apt-get install -y \
+   apt-utils \
    supervisor\
    git \
    vim \
@@ -17,17 +18,8 @@ RUN mkdir /logs/gunicorn
 COPY requirements.txt /src
 COPY gunicorn.conf /src
 COPY aslm-supervisor-gunicorn.conf /etc/supervisor/conf.d
+COPY run_django_app.sh /src
 COPY ./aslm /src
 WORKDIR /src
 # install project dependencies
 RUN pip install -r requirements.txt
-# collect static files
-CMD ["python", "manage.py", "collectstatic", "--no-input"]
-# prepare init migration
-CMD ["python", "manage.py", "makemigrations"]
-# migrate db, so we have the latest db schema
-CMD ["python", "manage.py", "migrate"]
-# start supervisor
-CMD ["supervisord"]
-# start celery worker
-CMD ["celery", "-A", "aslm", "worker", "-l", "debug"]
