@@ -2,8 +2,10 @@ version: '3'
 services:
   # create nginx web server container
   nginx:
-    build: nginx/
-    container_name: nginx-django
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: aslm-nginx-django
     ports:
       - "80:80"
     depends_on:
@@ -12,8 +14,10 @@ services:
       - local
   # create django application container
   web:
+    restart: always
     build: ./django/
     container_name: aslm-django-guinicorn
+    command: supervisord -c /etc/supervisor/conf.d/aslm-supervisor-gunicorn.conf -n
     depends_on:
       - db
     volumes:
@@ -26,23 +30,24 @@ services:
       - redis
     networks:
       - local
+    tty: true
   # create postgreSQL container
   db:
     image: postgres:latest
-    container_name: postgredb-django
+    container_name: aslm-postgredb-django
     networks:
       - local
   # create redis backend container
   redis:
     build: ./redis
-    container_name: redis-django
+    container_name: aslm-redis-django
     ports:
       - '6378:6378'
     networks:
       - local
   # create rabbitMQ for AMQP messages container
   rabbit:
-    container_name: rabbit-django
+    container_name: aslm-rabbit-django
     image: rabbitmq:latest
     environment:
       - RABBITMQ_DEFAULT_USER=admin
@@ -54,6 +59,7 @@ services:
       - local
   # create celery worker container
   worker:
+    container_name: aslm-celery-worker
     build:
       context: ./django
       dockerfile: Dockerfile_celery
