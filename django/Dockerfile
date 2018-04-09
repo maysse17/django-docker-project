@@ -1,6 +1,6 @@
-FROM python:3.6
+FROM python:3.6-slim-stretch
 
-MAINTAINER Adil MOUHSSINE
+LABEL maintainer="adil.mouhssine@gmail.com"
 
 RUN apt-get update && \
    apt-get install -y \
