@@ -6,6 +6,8 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: aslm-nginx-django
+    volumes:
+      - ./django/aslm:/src
     ports:
       - "80:80"
     depends_on:

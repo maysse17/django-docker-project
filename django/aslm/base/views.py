@@ -15,7 +15,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
     Class view to display dashboard
     """
 
-    template_name = 'home/home.html'
+    template_name = 'base/base.html'
 
     def get_context_data(self, **kwargs):
         """

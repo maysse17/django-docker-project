@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'webpack_loader',
     'django_js_reverse',
-
+    'home',
     'base',
     'accounts',
 ]
