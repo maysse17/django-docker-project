@@ -1,9 +1,9 @@
 from django.urls import re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from adil.accounts.views import SignUp
-from adil.accounts.views import LoginView
-from adil.accounts.views import LogoutView
+from accounts.views import SignUp
+from accounts.views import LoginView
+from accounts.views import LogoutView
 
 
 urlpatterns = [

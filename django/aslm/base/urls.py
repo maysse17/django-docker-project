@@ -2,7 +2,7 @@ import os
 from django.urls import re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from adil.base.views import HomeView
+from base.views import HomeView
 
 
 urlpatterns = [

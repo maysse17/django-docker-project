@@ -10,22 +10,18 @@ RUN apt-get update && \
    && rm -rf /var/lib/apt/lists/*
 ENV PYTHONUNBUFFERED 1
 ENV C_FORCE_ROOT true
-RUN mkdir src logs
-RUN mkdir /src/static
-RUN mkdir /src/media
-RUN mkdir /logs/gunicorn
+
+RUN mkdir -p /src/static
+RUN mkdir -p /src/media
+RUN mkdir -p /logs/gunicorn
 COPY requirements.txt /src
 COPY gunicorn.conf /src
 COPY aslm-supervisor-gunicorn.conf /etc/supervisor/conf.d
-COPY run_django_app.sh /src
 COPY ./aslm /src
 WORKDIR /src
 # install project dependencies
 RUN pip install -r requirements.txt
-# collect static files
-CMD python manage.py collectstatic --no-input
-# prepare init migration
-CMD python manage.py makemigrations
-# migrate db, so we have the latest db schema
-CMD python manage.py migrate
+
+ENTRYPOINT ["/bin/bash", "django_docker_entrypoint.sh"]
+
 

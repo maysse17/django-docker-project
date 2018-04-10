@@ -3,6 +3,11 @@ from django.views.defaults import server_error
 from django.views.defaults import permission_denied
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .tasks import show_hello_world
+import logging
+
+
+logger = logging.getLogger("django")
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -18,6 +23,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
         :param kwargs: data to pass to template
         :return:
         """
+        logger.info("Printing Hello from Django View")
+        show_hello_world.s().apply_async()
         context = super().get_context_data(**kwargs)
         context['menu'] = {'home': {'is_active': True}}
         return context

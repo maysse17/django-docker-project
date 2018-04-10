@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import ShowHelloWorld
-from django.conf.urls import url
+from base.views import HomeView
+from django.urls import include
+from django_js_reverse.views import urls_js
+from django.views.decorators.cache import cache_page
+from django.urls import re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'home^$', ShowHelloWorld.as_view())
+    path('home/', include(('base.urls', 'base'), namespace='base')),
+    path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
+    re_path(r'^jsreverse/$', cache_page(3600)(urls_js), name='js_reverse'),
 ]

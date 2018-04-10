@@ -1,9 +1,7 @@
-from django.views.generic.base import TemplateView
-
 # Create your views here.
 
 from django.views.generic import TemplateView
-from .tasks import show_hello_world
+from django.aslm.base.tasks import show_hello_world
 import logging
 
 

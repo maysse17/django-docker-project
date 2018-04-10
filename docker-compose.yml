@@ -17,7 +17,6 @@ services:
     restart: always
     build: ./django/
     container_name: aslm-django-guinicorn
-    command: supervisord -c /etc/supervisor/conf.d/aslm-supervisor-gunicorn.conf -n
     depends_on:
       - db
     volumes:

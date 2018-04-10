@@ -2,8 +2,8 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.views import LoginView as _LoginView
 from django.contrib.auth.views import LogoutView as _LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from adil.accounts.forms import UserCreationForm
-from adil.accounts.forms import AuthenticationForm
+from accounts.forms import UserCreationForm
+from accounts.forms import AuthenticationForm
 from django.urls.base import reverse_lazy
 from django.views.generic.base import HttpResponseRedirect
 from django.contrib.auth import authenticate
