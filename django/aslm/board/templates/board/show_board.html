@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% load render_bundle from webpack_loader %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb "Board" "#" %}
+{% endblock %}
+
+{% block content %}
+    <div class="row" id="boardTableId">
+    </div>
+    {% render_bundle 'board' %}
+{% endblock %}

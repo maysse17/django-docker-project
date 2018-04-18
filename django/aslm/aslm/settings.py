@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'home',
     'base',
     'accounts',
+    'board',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-INTERNAL_IPS = ['127.0.0.1', 'localhost']
+INTERNAL_IPS = ['web', '127.0.0.1', 'localhost']
 
 TITLE = 'BLOG'
 
@@ -181,20 +182,25 @@ import os
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[%(levelname)s] [%(asctime)s] [%(module)s] [%(process)d] [%(thread)d] [%(message)s]'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-        },
-        'celery': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-        },
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        }
     },
 }
 

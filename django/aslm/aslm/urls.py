@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include(('base.urls', 'base'), namespace='base')),
     path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
+    path('board/', include(('board.urls', 'board'), namespace='board')),
     re_path(r'^jsreverse/$', cache_page(3600)(urls_js), name='js_reverse'),
 ]
